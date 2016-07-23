@@ -8,16 +8,15 @@ In this tutorial we will be creating a small iOS App that will function as a Clo
 
 We can see whose turn it is and the timer will go:
 
-![alt text](https://raw.githubusercontent.com/mathiasquintero/ChessTimer/master/Screenshots/TurnA.png "Shot of a turn")
-![alt text](https://raw.githubusercontent.com/mathiasquintero/ChessTimer/master/Screenshots/TurnB.png "Shot of a turn")
+<img src="https://raw.githubusercontent.com/mathiasquintero/ChessTimer/master/Screenshots/TurnA.png" height="300"> <img src="https://raw.githubusercontent.com/mathiasquintero/ChessTimer/master/Screenshots/TurnB.png" height="300">
 
 In the last minute the text should give the player a warning. With a bright yellow font:
 
-![alt text](https://raw.githubusercontent.com/mathiasquintero/ChessTimer/master/Screenshots/Last.png "In the last minute the text should give a warning")
+<img src="https://raw.githubusercontent.com/mathiasquintero/ChessTimer/master/Screenshots/Last.png" height="300">
 
 In the end it displays which player won:
 
-![alt text](https://raw.githubusercontent.com/mathiasquintero/ChessTimer/master/Screenshots/End.png "At the end we see who the won")
+<img src="https://raw.githubusercontent.com/mathiasquintero/ChessTimer/master/Screenshots/End.png" height="300">
 
 We will cover:
 
