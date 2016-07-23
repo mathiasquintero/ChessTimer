@@ -1,0 +1,6 @@
+framework module Pods_ChessTimer {
+  umbrella header "Pods-ChessTimer-umbrella.h"
+
+  export *
+  module * { export * }
+}
