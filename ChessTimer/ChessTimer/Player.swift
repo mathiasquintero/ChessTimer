@@ -10,7 +10,7 @@ import Foundation
 class Player {
     
     var state: State
-    var counter = 3000
+    var counter = 300000
     
     init() {
         state = .Waiting
