@@ -6,6 +6,19 @@ Tutorial to create a small iOS App.
 
 In this tutorial we will be creating a small iOS App that will function as a Clock for fast chess.
 
+We can see whose turn it is and the timer will go:
+
+![alt text](https://raw.githubusercontent.com/mathiasquintero/ChessTimer/master/Screenshots/TurnA.png "Shot of a turn")
+![alt text](https://raw.githubusercontent.com/mathiasquintero/ChessTimer/master/Screenshots/TurnB.png "Shot of a turn")
+
+In the last minute the text should give the player a warning. With a bright yellow font:
+
+![alt text](https://raw.githubusercontent.com/mathiasquintero/ChessTimer/master/Screenshots/Last.png "In the last minute the text should give a warning")
+
+In the end it displays which player won:
+
+![alt text](https://raw.githubusercontent.com/mathiasquintero/ChessTimer/master/Screenshots/End.png "At the end we see who the won")
+
 We will cover:
 
 * MVC, Observer Pattern, State Pattern and Delegation
