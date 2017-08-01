@@ -24,8 +24,8 @@ class GameViewController: UIViewController {
     
     func setUpInterface() {
         let sepatatorView = UIView()
-        sepatatorView.backgroundColor = UIColor.whiteColor()
-        view.backgroundColor = UIColor.blackColor()
+        sepatatorView.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.black
         
         view.addSubview(playerTwoView)
         view.addSubview(playerOneView)
@@ -54,7 +54,7 @@ class GameViewController: UIViewController {
         
     }
     
-    func toggle(sender: AnyObject? = nil) {
+    func toggle(_ sender: AnyObject? = nil) {
         if game?.isRunning ?? false {
            game?.toggle()
         } else {
@@ -62,7 +62,7 @@ class GameViewController: UIViewController {
         }
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 
@@ -70,17 +70,17 @@ class GameViewController: UIViewController {
 
 extension GameViewController: GameObserver {
     
-    func updatePlayers(playerOne: Player, playerTwo: Player) {
+    func updatePlayers(_ playerOne: Player, playerTwo: Player) {
         playerOneView.updateCounter(playerOne)
         playerTwoView.updateCounter(playerTwo)
     }
     
-    func animateToggle(playerOne: Player, playerTwo: Player) {
+    func animateToggle(_ playerOne: Player, playerTwo: Player) {
         playerOneView.animateChange(playerOne)
         playerTwoView.animateChange(playerTwo)
     }
     
-    func gameEnded(playerOne: Bool, playerTwo: Bool) {
+    func gameEnded(_ playerOne: Bool, playerTwo: Bool) {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
         playerOneView.end(playerOne)
         playerTwoView.end(playerTwo)

@@ -12,7 +12,7 @@ class Game {
     var playerOne: Player
     var playerTwo: Player
     let observer: GameObserver
-    var timer: NSTimer?
+    var timer: Timer?
     
     var isRunning: Bool {
         get {
@@ -33,10 +33,10 @@ class Game {
         playerOne.toggle()
         updateIfChangeRelevant()
         observer.animateToggle(playerOne, playerTwo: playerTwo)
-        timer = NSTimer.scheduledTimerWithTimeInterval(0.001, target: self, selector: #selector(Game.action(_:)), userInfo: nil, repeats: true)
+        timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(Game.action(_:)), userInfo: nil, repeats: true)
     }
     
-    @objc func action(sender: AnyObject? = nil) {
+    @objc func action(_ sender: AnyObject? = nil) {
         playerOne.action()
         playerTwo.action()
         updateIfChangeRelevant()

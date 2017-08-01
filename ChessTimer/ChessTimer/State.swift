@@ -8,15 +8,15 @@
 
 import Foundation
 enum State {
-    case Playing
-    case Waiting
+    case playing
+    case waiting
     
     func toggle() -> State {
         switch self {
-        case .Playing:
-            return .Waiting
-        case .Waiting:
-            return .Playing
+        case .playing:
+            return .waiting
+        case .waiting:
+            return .playing
         }
     }
 }
