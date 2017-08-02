@@ -10,41 +10,39 @@ import Foundation
 class Player {
     
     var state: State
-    var counter = 300000
+    private var internalRemaining: TimeInterval = 5.0 * 60.0
+    private var lastStateChange: Date
+    
+    var remaining: TimeInterval {
+        guard case .playing = state else {
+            return max(0, internalRemaining)
+        }
+        return max(0, internalRemaining - Date().timeIntervalSince(lastStateChange))
+    }
     
     init() {
-        state = .Waiting
+        state = .waiting
+        lastStateChange = Date()
     }
     
     var isChangeRelevant: Bool {
-        get {
-            return counter % 1000 == 0 && state == .Playing
-        }
+        return (remaining - Double(Int(remaining))) < 0.1 && state == .playing
     }
     
     var lost: Bool {
-        get {
-            return counter == 0
-        }
+        return remaining == 0
     }
     
     var currentCounter: String {
-        get {
-            let totalSeconds = counter / 1000
-            let minutes = String(format: "%02d", totalSeconds / 60)
-            let seconds = String(format: "%02d", totalSeconds % 60)
-            return "\(minutes):\(seconds)"
-        }
+        let minutes = String(format: "%02d", Int(remaining / 60.0))
+        let seconds = String(format: "%02d", Int(remaining) % 60)
+        return "\(minutes):\(seconds)"
     }
     
     func toggle() {
+        internalRemaining = remaining
+        lastStateChange = Date()
         state = state.toggle()
-    }
-    
-    func action() {
-        if state == .Playing && counter > 0 {
-            counter -= 1
-        }
     }
     
     
