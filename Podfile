@@ -6,5 +6,5 @@ use_frameworks!
 
 target "ChessTimer" do
 	xcodeproj 'ChessTimer/ChessTimer.xcodeproj'
-	pod 'SnapKit'
+	pod 'SnapKit', '~> 3.2.0'
 end
