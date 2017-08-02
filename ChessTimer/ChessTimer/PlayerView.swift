@@ -13,42 +13,68 @@ class PlayerView: UIView {
     
     let playerLabel = UILabel()
     
-    override func drawRect(rect: CGRect) {
+    override func draw(_ rect: CGRect) {
         addSubview(playerLabel)
-        playerLabel.font = playerLabel.font.fontWithSize(100)
+        playerLabel.font = playerLabel.font.withSize(100).monospacedDigitFont
         playerLabel.snp_makeConstraints() { make in
             make.center.equalTo(self)
         }
     }
     
-    func updateCounter(player: Player) {
+    func updateCounter(for player: Player) {
         playerLabel.text = player.currentCounter
-        backgroundColor = UIColor.clearColor()
-        if player.counter < 60000 {
-            playerLabel.textColor = UIColor.yellowColor()
+        backgroundColor = UIColor.clear
+        if player.remaining < 60.0 {
+            playerLabel.textColor = UIColor.yellow
         } else {
-            playerLabel.textColor = UIColor.whiteColor()
+            playerLabel.textColor = UIColor.white
         }
     }
     
-    func animateChange(player: Player) {
-        let scale: CGFloat = player.state == .Playing ? 1.0 : 0.5
-        self.scale(scale)
+    func animateChange(_ player: Player) {
+        let scale: CGFloat = player.state == .playing ? 1.0 : 0.5
+        self.scale(to: scale)
     }
     
-    private func scale(scale: CGFloat) {
-        UIView.animateWithDuration(0.5) {
-            self.playerLabel.transform = CGAffineTransformMakeScale(scale, scale)
-        }
+    fileprivate func scale(to scale: CGFloat) {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.playerLabel.transform = CGAffineTransform(scaleX: scale, y: scale)
+        }) 
     }
     
-    func end(won: Bool) {
-        scale(1.0)
-        UIView.animateWithDuration(0.5) {
-            self.playerLabel.textColor = UIColor.whiteColor()
+    func end(_ won: Bool) {
+        scale(to: 1.0)
+        UIView.animate(withDuration: 0.5, animations: {
+            self.playerLabel.textColor = UIColor.white
             self.playerLabel.text = won ? "Winner!" : "Loser"
-            self.backgroundColor = won ? UIColor.greenColor() : UIColor.redColor()
-        }
+            self.backgroundColor = won ? UIColor.green : UIColor.red
+        }) 
     }
 
+}
+
+extension UIFontDescriptor {
+    
+    var monospacedDigitFontDescriptor: UIFontDescriptor {
+        let fontDescriptorFeatureSettings = [
+            [
+                UIFontFeatureTypeIdentifierKey: kNumberSpacingType,
+                UIFontFeatureSelectorIdentifierKey: kMonospacedNumbersSelector,
+            ]
+        ]
+        let fontDescriptorAttributes = [UIFontDescriptorFeatureSettingsAttribute: fontDescriptorFeatureSettings]
+        let fontDescriptor = self.addingAttributes(fontDescriptorAttributes)
+        return fontDescriptor
+    }
+    
+}
+
+extension UIFont {
+    
+    var monospacedDigitFont: UIFont {
+        let oldFontDescriptor = fontDescriptor
+        let newFontDescriptor = oldFontDescriptor.monospacedDigitFontDescriptor
+        return UIFont(descriptor: newFontDescriptor, size: 0)
+    }
+    
 }

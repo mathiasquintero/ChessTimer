@@ -32,25 +32,23 @@ class Game {
         playerTwo = Player()
         playerOne.toggle()
         updateIfChangeRelevant()
-        observer.animateToggle(playerOne, playerTwo: playerTwo)
+        observer.animateToggle(playerOne: playerOne, playerTwo: playerTwo)
         timer = Timer.scheduledTimer(timeInterval: 0.001, target: self, selector: #selector(Game.action(_:)), userInfo: nil, repeats: true)
     }
     
     @objc func action(_ sender: AnyObject? = nil) {
-        playerOne.action()
-        playerTwo.action()
         updateIfChangeRelevant()
         if playerOne.lost || playerTwo.lost {
             timer?.invalidate()
             timer = nil
-            observer.gameEnded(!playerOne.lost, playerTwo: !playerTwo.lost)
+            observer.gameEnded(playerOne: !playerOne.lost, playerTwo: !playerTwo.lost)
         }
     }
     
     func toggle() {
         playerOne.toggle()
         playerTwo.toggle()
-        observer.animateToggle(playerOne, playerTwo: playerTwo)
+        observer.animateToggle(playerOne: playerOne, playerTwo: playerTwo)
         update()
     }
     
@@ -61,7 +59,7 @@ class Game {
     }
     
     func update() {
-         observer.updatePlayers(playerOne, playerTwo: playerTwo)
+        observer.updatePlayers(playerOne: playerOne, playerTwo: playerTwo)
     }
     
 }

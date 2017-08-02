@@ -110,12 +110,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0E7AF8DE1D43922100D2B800 /* Build configuration list for PBXNativeTarget "ChessTimer" */;
 			buildPhases = (
-				47D02F2158680C38BE273D9B /* Check Pods Manifest.lock */,
+				47D02F2158680C38BE273D9B /* [CP] Check Pods Manifest.lock */,
 				0E7AF8C81D43922100D2B800 /* Sources */,
 				0E7AF8C91D43922100D2B800 /* Frameworks */,
 				0E7AF8CA1D43922100D2B800 /* Resources */,
-				4B6C0CF299582A2744A8AC75 /* Embed Pods Frameworks */,
-				B4ACBA6274D6ECD3CC944C36 /* Copy Pods Resources */,
+				4B6C0CF299582A2744A8AC75 /* [CP] Embed Pods Frameworks */,
+				B4ACBA6274D6ECD3CC944C36 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -139,6 +139,7 @@
 					0E7AF8CB1D43922100D2B800 = {
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = ZGV2PY25EN;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -174,29 +175,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		47D02F2158680C38BE273D9B /* Check Pods Manifest.lock */ = {
+		47D02F2158680C38BE273D9B /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		4B6C0CF299582A2744A8AC75 /* Embed Pods Frameworks */ = {
+		4B6C0CF299582A2744A8AC75 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,14 +205,14 @@
 			shellScript = "\"${SRCROOT}/../Pods/Target Support Files/Pods-ChessTimer/Pods-ChessTimer-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		B4ACBA6274D6ECD3CC944C36 /* Copy Pods Resources */ = {
+		B4ACBA6274D6ECD3CC944C36 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,6 +351,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mathiasquintero.www.ChessTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -362,6 +364,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.mathiasquintero.www.ChessTimer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};

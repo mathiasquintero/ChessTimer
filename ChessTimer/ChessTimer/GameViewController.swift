@@ -70,17 +70,17 @@ class GameViewController: UIViewController {
 
 extension GameViewController: GameObserver {
     
-    func updatePlayers(_ playerOne: Player, playerTwo: Player) {
-        playerOneView.updateCounter(playerOne)
-        playerTwoView.updateCounter(playerTwo)
+    func updatePlayers(playerOne: Player, playerTwo: Player) {
+        playerOneView.updateCounter(for: playerOne)
+        playerTwoView.updateCounter(for: playerTwo)
     }
     
-    func animateToggle(_ playerOne: Player, playerTwo: Player) {
+    func animateToggle(playerOne: Player, playerTwo: Player) {
         playerOneView.animateChange(playerOne)
         playerTwoView.animateChange(playerTwo)
     }
     
-    func gameEnded(_ playerOne: Bool, playerTwo: Bool) {
+    func gameEnded(playerOne: Bool, playerTwo: Bool) {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
         playerOneView.end(playerOne)
         playerTwoView.end(playerTwo)
